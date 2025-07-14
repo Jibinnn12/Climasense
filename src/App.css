@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Optional: Apply the font globally */
+body {
+  
+  font-family:  sans-serif;
+}
