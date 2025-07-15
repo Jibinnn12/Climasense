@@ -15,7 +15,7 @@ const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/">
-          <img src="/tlogo.png" alt="Logo" className="h-20" />
+          <img src={isDark?"/public/tlogo-white.png":"/public/tlogo.png"} alt="Logo" className="w-[102px] h-[80px] object-contain"/>
         </Link>
 
         {/* Toggle Button */}
