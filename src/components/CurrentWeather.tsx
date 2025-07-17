@@ -54,9 +54,9 @@ const formatTemp = (temp:number) => `${Math.round(temp)}°`
 
           </div>
           <p className="text-sm text-muted-foreground">
-            {locationName?.country}</p>
+            {locationName?.country}</p> 
         </div>
-       <div className="flex items-center gap-2">
+       <div className="flex items-center gap-5.5">
        <p className="text-7xl font-bold tracking-tighter transition-all duration-300">
            {formatTemp(temp)}
        </p>
