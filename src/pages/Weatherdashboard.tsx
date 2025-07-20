@@ -3,6 +3,7 @@ import HourlyTemprature from "@/components/HourlyTemprature";
 import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button"
+import WeatherForecast from "@/components/WeatherForecast";
 
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
@@ -19,7 +20,7 @@ const Weatherdashboard = () => {
    const forecastQuery = useForecastQuery(coordinates);
   const locationQuery = useReverseGeocodeQuery(coordinates);
   
-  console.log(weatherQuery.data)
+
   
 
  
@@ -70,9 +71,9 @@ const Weatherdashboard = () => {
   }
 
   const locationName = locationQuery.data?.[0];
-  const loc = weatherQuery.data?.name
+  
 
-  console.log(loc)
+
   
 
  
@@ -135,7 +136,7 @@ const Weatherdashboard = () => {
         </div>
 
         <div>
-
+        <WeatherForecast data={forecastQuery.data}/>
 
         </div> 
 

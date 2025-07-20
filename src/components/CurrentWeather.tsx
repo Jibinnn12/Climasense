@@ -1,8 +1,8 @@
 import type { GeocodingResponse, WeatherData } from "@/api/types"
-import { Card, CardContent } from "./ui/card";
-import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
+import { Card, CardContent,} from "./ui/card";
+import { ArrowDown, ArrowUp, Droplets, Sunrise, Sunset, Wind } from "lucide-react";
 import { useState } from "react";
-
+import { fromUnixTime, format } from 'date-fns'
 
 interface CurrentWeatherProps{
   data:WeatherData;
@@ -19,6 +19,9 @@ const CurrentWeather = ({data,locationName} : CurrentWeatherProps) => {
     
 
   }=data
+ 
+
+
 
 const formatTemp = (temp:number) => `${Math.round(temp)}°` 
 
@@ -49,9 +52,14 @@ const CelToFar =()=>{
   setSelectedUnit("F");
 }
 
+const sunriseTime = format(fromUnixTime(data.sys?.sunrise), 'hh:mm a')
+const sunsetTime = format(fromUnixTime(data.sys?.sunset), 'hh:mm a')
 
 
-  return (
+
+  return ( 
+
+    
     
     <Card className="overflow-hidden">
   
@@ -94,7 +102,7 @@ const CelToFar =()=>{
         onClick={FarToCel}
 
 
-        className= {` mr-[-2px] cursor-pointer ${selectedUnit==="C"? "font-bold text-white " : "text-muted-foreground" 
+        className= {` mr-[-2px] cursor-pointer ${selectedUnit==="C"? "font-bold " : "text-muted-foreground" 
         }`}
         >C° </div>
 
@@ -107,7 +115,7 @@ const CelToFar =()=>{
         onClick={CelToFar}
 
 
-        className={`cursor-pointer ${selectedUnit==="F"? "font-bold text-white" : " text-muted-foreground"} `}
+        className={` cursor-pointer ${selectedUnit==="F"? "font-bold" : " text-muted-foreground"} `}
 
         > F°</div>
 
@@ -133,7 +141,7 @@ const CelToFar =()=>{
 
           </div>
        </div>
-           <div className="grid grid-cols-2 gap-2">
+           <div className="grid grid-cols-2 gap-1">
             <div className="flex items-center gap-2">
               <Droplets className="h-4 w-4 text-blue-500"/>
               <div className="space-y-0.5">
@@ -163,6 +171,25 @@ const CelToFar =()=>{
           </div>
         </div>
       </div>
+
+      <div className="flex gap-4 items-center">
+  <div className=" hover:bg-black flex items-center gap-3  border rounded-xl px-4 py-3 shadow-sm">
+    <Sunrise className="text-orange-300 w-5 h-5" />
+    <div className="leading-tight"> 
+      <p className="text-xs">Sunrise</p>
+      <p className="text-sm font-medium">{sunriseTime}</p>
+    </div>
+  </div>
+
+  <div className="  hover:bg-black  flex items-center gap-3 border  rounded-xl px-4 py-3 shadow-sm">
+    <Sunset className="text-blue-300 w-5 h-5" />
+    <div className="leading-tight">
+      <p className="text-xs ">Sunset</p>
+      <p className="text-sm font-medium">{sunsetTime}</p>
+    </div>
+  </div>
+</div>
+
     </div>
 
    
@@ -172,6 +199,9 @@ const CelToFar =()=>{
   </CardContent>
  
 </Card>
+
+
+   
     
   )
 }
