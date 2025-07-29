@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "./context/theme-provider";
 import { Sun, Moon } from "lucide-react";
+import CitySearch from "./CitySearch";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -18,8 +19,16 @@ const Header = () => {
           <img src={isDark?"/public/tlogo-white.png":"/public/tlogo.png"} alt="Logo" className="w-[102px] h-[80px] object-contain"/>
         </Link>
 
+        <div>
+            <CitySearch/>
+
+</div>
+        
+
         {/* Toggle Button */}
         <div
+
+        
           onClick={toggleTheme}
           className={`relative w-[75px] h-10 rounded-full p-1 flex items-center transition-all duration-300 shadow-inner cursor-pointer ${
             isDark ? 'bg-[#1d1f35]' : 'bg-gray-200'

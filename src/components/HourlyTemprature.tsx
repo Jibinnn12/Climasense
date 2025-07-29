@@ -49,14 +49,14 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
     const selectedDate = parseISO(selectedDay);
 
     if (isToday(selectedDate)) {
-      return data.list.slice(0, 8).map((item) => ({
+      return data.list.slice(0, 6).map((item) => ({
         time: format(new Date(item.dt * 1000), "ha"),
         temp: Math.round(item.main.temp),
         feels_like: Math.round(item.main.feels_like),
       }));
     }
     const items = grouped[selectedDay] ?? [];
-    return items.slice(0,8).map((item) => ({
+    return items.slice(0,6).map((item) => ({
       time: format(new Date(item.dt * 1000), "ha"),
       temp: Math.round(item.main.temp),
       feels_like: Math.round(item.main.feels_like),

@@ -23,7 +23,7 @@ class WeatherAPI{
                 throw new Error (`Weather API Error: ${response.statusText}`
                 );
                 
-            }
+            } 
             return response.json();
 
 
@@ -57,6 +57,23 @@ class WeatherAPI{
                 lat:lat.toString(),
                 lon:lon.toString(),
                 limit:1,
+                
+
+            });
+
+            
+    
+             return this.fetchData<GeocodingResponse[]>(url);
+   
+
+
+        }
+
+
+        async searchLocations(query:string):Promise<GeocodingResponse[]>{
+            const url = this.createUrl(`${API_CONFIG.GEO}/direct`,{
+                q:query,
+                limit:5,
                 
 
             });
