@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import  { useMemo, useState } from "react";
 import type { ForecastData } from "@/api/types";
 // Import your Card, CardContent, CardHeader etc. as before
 import {
