@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
 interface WeatherForecastProps{
     data:ForecastData;
+    
 }
 
 interface DailyForecast {
