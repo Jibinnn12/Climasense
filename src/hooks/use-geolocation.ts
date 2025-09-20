@@ -20,7 +20,7 @@ export function useGeolocation(){
         setLocationData((prev)=>({...prev,isLoading:true,error:null}));
 
         if(!navigator.geolocation){
-            setLocationData({
+            setLocationData({ 
                 coordinates:null,
                 error:"Geolocation is not supported by your browser",
                 isLoading:false,

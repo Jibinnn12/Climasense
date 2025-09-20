@@ -4,17 +4,25 @@ import { Button } from './ui/button'
 import { useState } from 'react'
 import { Loader2, Search } from 'lucide-react';
 import { useLocationSearch } from '@/hooks/use-weather';
+import { useNavigate } from 'react-router-dom';
 
 const CitySearch = () => {
 
   const[open,setOpen]=useState(false);
   const[query,setQuery]=useState("");
+  const navigate = useNavigate();
 
   const{data:locations,isLoading}=useLocationSearch(query)
 
-  const handleSelect =()=>{
-    const loc = location
-    console.log(loc)
+  const handleSelect =(cityData:string)=>{
+    const[lat,lon,name]=cityData.split("|")
+
+    navigate(`/city/${name}?lat=${lat}&lon=${lon}`)
+    setOpen(false)
+
+    console.log(name)
+
+    
 
   }
   return (
@@ -23,9 +31,9 @@ const CitySearch = () => {
 
     <Button
     variant="outline"
-    className= 'relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64 '
+    className= ' font-stretch-75% font-sans relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64 '
     
-    onClick={()=>setOpen(true)}><Search className='mr-2 h-4 w-4'></Search> Search cities.. </Button>
+    onClick={()=>setOpen(true)}><Search className=' mr-2 h-4 w-4 font-mono'></Search> Search cities.. </Button>
    
     <CommandDialog className='w-[500px] mx-auto' open={open} onOpenChange={setOpen}>
         <CommandInput 

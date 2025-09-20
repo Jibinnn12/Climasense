@@ -108,7 +108,7 @@ const Weatherdashboard = () => {
   return (
     <div>
       
-      <div  className="flex items-centre justify-between" >
+      <div  className="flex items-center justify-between" >
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button
         variant={"outline"}
@@ -122,7 +122,7 @@ const Weatherdashboard = () => {
     </div>
       <div className="grid gap-6">
 
-        <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex flex-col gap-4">
           <CurrentWeather
  
             data={weatherQuery.data}
